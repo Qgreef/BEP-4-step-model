@@ -76,7 +76,7 @@ def route_assignment(dist_hour_results, loops):
 
 trips = [53808, 58528, 54000, 120055, 55021, 57026, 89151, 38976, 58521,
          14947, 26113, 35867, 20044, 30073, 18314, 21331, 16131, 45738]
-#trips = [i/2 for i in trips]
+trips = [i/2 for i in trips]
 beta = 0.1
 
 labels = ["Dukenburg", "Lindenholt", "Centrum", "Midden", "Nieuw-West", "Noord", "Oost", "Oud-West", "Zuid",
@@ -273,4 +273,5 @@ for i in range(len(singles)-1):
             print(f"Intensity {singles_names[i]}singel equals {roadlist[m].va} per hour and {roadlist[m].va*24} per day")
 print(through_traffic / 4)
 
-
+for i in range(len(roadlist)):
+    print(f"Intensity between {roadlist[i].node1} and {roadlist[i].node2} is {roadlist[i].va}")
