@@ -76,7 +76,7 @@ def route_assignment(dist_hour_results, loops):
 
 trips = [53808, 58528, 54000, 120055, 55021, 57026, 89151, 38976, 58521,
          14947, 26113, 35867, 20044, 30073, 18314, 21331, 16131, 45738]
-#trips = [i/2 for i in trips]
+trips = [i/2 for i in trips]
 beta = 0.1
 
 labels = ["Dukenburg", "Lindenholt", "Centrum", "Midden", "Nieuw-West", "Noord", "Oost", "Oud-West", "Zuid",
@@ -261,7 +261,8 @@ for i in range(1):
 
 
 print(dist_data)
-print(dtt_data)
+print(ftt_data)
+print(att_data)
 
 singles = ["r", "z", "C", "y", "x", "v"]
 singles_names = ["Kronenburger", "Nassau", "Oranje", "Oranje", "Sint Canisius"]
@@ -277,19 +278,10 @@ for i in range(len(singles)-1):
 
 print(through_traffic / 4)
 
-s100 = ["gg", "ff", "Z", "b", "e", "f", "i", "m", "n", "NW", "r", "s", "N", "v"]
-s100_traffic_zn = 0
-s100_traffic_nz = 0
-for i in range(len(s100)-1):
-    for m in range(len(roadlist)):
-        if s100[i] == roadlist[m].node1 and s100[i + 1] == roadlist[m].node2:
-            print(f"Verkeer tussen {s100[i]} en {s100[i + 1]}")
-            print(roadlist[m].va)
-            s100_traffic_zn += roadlist[m].va
-        elif s100[i + 1] == roadlist[m].node1 and s100[i] == roadlist[m].node2:
-            s100_traffic_nz += roadlist[m].va
-            print(roadlist[m].va)
-print(f"Zuid noord is {s100_traffic_zn} en noord zuid is {s100_traffic_nz}")
+for i in range(len(roadlist)):
+    print(f"Intensity between {roadlist[i].node1} and {roadlist[i].node2} is {roadlist[i].va}")
+
+
 
 intensities = []
 for i in range(len(roadlist)): intensities.append(roadlist[i].va/1000)
